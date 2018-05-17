@@ -1,10 +1,15 @@
 package com.cperbony.models;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
+@Entity
+@Table(name="people")
 public class Person {
 	
 	@Id
@@ -13,6 +18,7 @@ public class Person {
 	private Long id;
 	
 	@Column
+	@NotEmpty
 	private String name;
 	
 	@Column
@@ -21,12 +27,18 @@ public class Person {
 
 	public Person() {
 	}
+	
+	public Person(String name, Integer age) {
+		this.name = name;
+		this.age = age;
+	}
 
 	public Person(Long id, String name, Integer age) {
 		this.id = id;
 		this.name = name;
 		this.age = age;
 	}
+	
 
 	public Long getId() {
 		return id;
